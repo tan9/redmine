@@ -63,6 +63,7 @@ case "$1" in
 		fi
 		if [ "$1" != 'rake' -a -z "$REDMINE_NO_DB_MIGRATE" ]; then
 			gosu redmine rake db:migrate
+			gosu redmine rake redmine:plugins:migrate NAME=redmine_tags RAILS_ENV=production
 		fi
 		
 		chown -R redmine:redmine files log public/plugin_assets

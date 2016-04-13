@@ -50,6 +50,7 @@ RUN curl -fSL "http://www.redmine.org/releases/redmine-${REDMINE_VERSION}.tar.gz
 	&& echo "$REDMINE_DOWNLOAD_MD5 redmine.tar.gz" | md5sum -c - \
 	&& tar -xvf redmine.tar.gz --strip-components=1 \
 	&& rm redmine.tar.gz files/delete.me log/delete.me \
+	&& git clone https://github.com/ixti/redmine_tags.git plugins/redmine_tags \
 	&& mkdir -p tmp/pdf public/plugin_assets \
 	&& chown -R redmine:redmine ./
 
